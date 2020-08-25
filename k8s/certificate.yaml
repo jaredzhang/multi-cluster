@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: jaredzhang-xyz-tls
+spec:
+  secretName: jaredzhang-xyz
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: jaredzhang.xyz
+  dnsNames:
+    - jaredzhang.xyz
+    - www.jaredzhang.xyz
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - jaredzhang.xyz
+          - www.jaredzhang.xyz
